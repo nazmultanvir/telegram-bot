@@ -1,0 +1,20 @@
+{
+  "name": "instaforexchatbot",
+  "version": "1.0.0",
+  "description": "<html>\r <head>\r     <title>helloworld sample</title>\r     <style>\r         pre\r         {\r             background-color: eeeeee;\r         }\r     </style>\r </head>\r <body>\r     <h2>\r         helloworld</h2>\r     <p>\r         The title says it all. Key points are:</p>\r     <ul>\r         <li>An IIS handler for node.js must be registered in web.config to designate the hello.js\r             file as a node.js application. This allows other *.js files in this web application\r             to be served by IIS as static client side JavaScript files.</li>\r         <li>The node.js listen address must be specified as 'process.env.PORT' when starting\r             the listener. When an application is hosted in IIS, the web server controls the\r             base address of the application, which is provided to the node process via an environment\r             variable. </li>\r         <li>node.js applications can exist side by side with other content types: HTML files,\r             client side JavaScript files, ASP.NET, PHP, WCF, ...</li>\r     </ul>\r     visit the node.js endpoint at <a href=\"hello.js\">hello.js</a><br />\r     debug node.js endpoint at <a href=\"hello.js/debug\" target=\"_blank\">hello.js/debug</a> (requires WebKit enabled browser)<br />\r     get a client side JavaScript file from <a href=\"helloClient.js\">helloClient.js</a>\r     <p>\r         <b>code</b></p>\r     <pre>var http = require('http');",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chatbot"
+  ],
+  "author": "instaforex",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.7",
+    "telegraf": "^3.22.1"
+  }
+}
