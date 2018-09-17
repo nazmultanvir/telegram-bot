@@ -1,4 +1,4 @@
-(node:10648) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+(node:1396) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
 Failed to process updates. { Error: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
     at buildConfig.then.then.then.then (C:\Projects\chatbot\chatbot\node_modules\telegraf\core\network\client.js:254:17)
     at <anonymous>
@@ -11,5 +11,5 @@ Failed to process updates. { Error: 409: Conflict: terminated by other getUpdate
   description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running',
   parameters: {},
   on: 
-   { method: 'getUpdates?offset=534692628&limit=100&timeout=30',
+   { method: 'getUpdates?offset=0&limit=100&timeout=30',
      payload: {} } }

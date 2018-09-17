@@ -9,6 +9,7 @@ const Markup = require('telegraf/markup')
 //db
 const mongoose = require('mongoose');
 const currencyPair= require('./method/cureencyPair');
+const sendMessage =require('./method/sendMessage');
 const pointCalculation= require('./method/pointsCalculation');
 const BetGroup = require('./method/betGroup');
 mongoose.connect('mongodb://127.0.0.1:27017/Data');
@@ -107,30 +108,51 @@ bot.action('BetDOWN', (ctx) => {
 //CallBackQuery
 
 
-bot.command('bet1v', ctx=>{
-	async function asyncCall() {
-		var result = await currencyPair.pairValue('EURUSD','GOLD');
-		return result;
-	  }
-	  asyncCall().then((result)=>{
+bot.command('user', ctx=>{
+	User.find({})
+    .exec()
+    .then(user => {
 
-		ctx.reply('The first sum is EURUSD + GOLD rates, the current rate is '+result+'. Do you think the rate will go up or down by the end of the week?').then(()=>{
-			ctx.reply('Press UP or DOWN', Markup.inlineKeyboard([
-				Markup.callbackButton('👍 UP', 'BetUP'),
-				Markup.callbackButton('👎 DOWN', 'BetDOWN'),
-			  ]).extra());
-		})
+		let chatId = user[1].chatId;
+		let message = 'this test knock for test from nazmul';
+		console.log(chatId, message);
 
-	  })
+		sendMessage.sendMessage(user[0].chatId, message);
+		sendMessage.sendMessage(user[1].chatId, message);
+		sendMessage.sendMessage(user[2].chatId, message);
+
+		// let i  = 0;
+		// for(i==0; i<=user.length;i++){
+		// 	sendMessage.sendMessage(chatId, message);
+		// }
+	});
 })
+
+// bot.command('bet1v', ctx=>{
+// 	async function asyncCall() {
+// 		var result = await currencyPair.pairValue('EURUSD','GOLD');
+// 		return result;
+// 	  }
+// 	  asyncCall().then((result)=>{
+
+// 		ctx.reply('The first sum is EURUSD + GOLD rates, the current rate is '+result+'. Do you think the rate will go up or down by the end of the week?').then(()=>{
+// 			ctx.reply('Press UP or DOWN', Markup.inlineKeyboard([
+// 				Markup.callbackButton('👍 UP', 'BetUP'),
+// 				Markup.callbackButton('👎 DOWN', 'BetDOWN'),
+// 			  ]).extra());
+// 		})
+
+// 	  })
+// })
 
 
 //points
 bot.command('points', ctx =>{
-	User.find({})
+	User.find({chatId: ctx.from.id})
     .exec()
     .then(user => {
-      ctx.reply('You have '+user[0].points+' remaining');
+	  
+	  
 	});
 })
 
@@ -166,16 +188,28 @@ bot.command('/betreamin', ctx =>{
 
 //test
 
+//points
+bot.command('/result', ctx =>{
+	ctx.reply('This weeks bet result is not publish yet !');
 
+})
+
+
+//setBets 
 bot.command('bets', ctx=>{
-	// console.log(ctx.chat);
 	const command =ctx.update.message.text;
+
+	BetList.find({}).exec()
+    .then(result => {
+		console.log(result)
+	})
 	let res = command.split(" ");
+
 	BetList.find({betId : BetGroup.betGroupRoundUp()}).exec()
     .then(result => {
 		console.log(result);
-		if(result.length <= 3){
-			const betList = new BetList({ betListId: BetGroup.betGroupRoundUp()+1, betId : BetGroup.betGroupRoundUp(), betListCurrencyOne: res[1], betListCurrencyTwo: res[2], betListDate : new Date() });
+		if(result.length <= 2){
+			const betList = new BetList({ betListId: (BetGroup.betGroupRoundUp()*10)+(result.length+1), betId : BetGroup.betGroupRoundUp(), betListCurrencyOne: res[1], betListCurrencyTwo: res[2], betListDate : new Date() });
 			betList.save().then((betList) => {
 				console.log(betList);
 				ctx.reply('You have set bet currency pair successfully !');
@@ -183,6 +217,18 @@ bot.command('bets', ctx=>{
 		}else{
 			ctx.reply('You have already set three bet currency pair for this week !');
 		}
+	})
+
+})
+
+bot.command('betsdel', ctx=>{
+	BetList.remove({betId : BetGroup.betGroupRoundUp()}).exec()
+    .then(result => {
+		console.log('removes : findByIdAndRemove',result);
+		BetList.find({betId : BetGroup.betGroupRoundUp()}).exec()
+		.then(result => {
+			console.log(result);})
+	
 	})
 
 })
@@ -198,28 +244,7 @@ bot.command('help', ctx => {
     
 })
 
-// const helpMsg = `Command reference:
-// /start - Start bot (mandatory in groups)
-// /inc - Increment default counter
-// /inc1 - Increment counter 1
-// /incx - Increment counter x (replace x with any number)
-// /dec - Decrement counter
-// /decx - Decrement counter x
-// /reset - Reset counter back to 0
-// /resetx - Reset counter x back to 0
-// /set y - Set counter to y [/set y]
-// /setx y - Set counter x to y [/setx y]
-// /get - Show current counter
-// /getx - Show value of counter x
-// /getall - Show all counters
-// /stop - Attemt to stop bot
-// /about - Show information about the bot
-// /help - Show this help page
-// Tip: You can also use e.g. '/inc2 5' to increase counter two by five counts.`;
 
-// bot.command('help', ctx => {
-//     ctx.reply(helpMsg);
-// });
 
 
 
@@ -244,7 +269,7 @@ bot.command('bet', ctx => {
 				reply_markup: JSON.stringify({
 					 inline_keyboard: currencyPair.map((x, xi) => ([{
 						 text: x,
-						 callback_data: String('setBet:'+betList[xi].betListCurrencyOne+':'+betList[xi].betListCurrencyTwo+':'+BetGroup.betGroupRoundUp()+xi),
+						 callback_data: String('setBet:'+betList[xi].betListCurrencyOne+':'+betList[xi].betListCurrencyTwo+':'+BetGroup.betGroupRoundUp()+(xi+1)),
 					 }])),
 			   }),
 		   };
