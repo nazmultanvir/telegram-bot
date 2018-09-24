@@ -1,0 +1,32 @@
+(node:1948) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Failed to fetch updates. Waiting: 1s 502: Bad Gateway
+Failed to fetch updates. Waiting: 1s 502: Bad Gateway
+(node:1948) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'chatId' of undefined
+    at User.find.exec.then.user (C:\Projects\chatbot\chatbot\server.js:117:25)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+(node:1948) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1948) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:1948) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'chatId' of undefined
+    at User.find.exec.then.user (C:\Projects\chatbot\chatbot\server.js:117:25)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+(node:1948) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
+(node:1948) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'betListCurrencyOne' of undefined
+    at currencyPair (C:\Projects\chatbot\chatbot\server.js:256:34)
+    at BetList.find.exec.then.betList (C:\Projects\chatbot\chatbot\server.js:271:3)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+(node:1948) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3)
+(node:1948) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'betListCurrencyOne' of undefined
+    at currencyPair (C:\Projects\chatbot\chatbot\server.js:256:34)
+    at BetList.find.exec.then.betList (C:\Projects\chatbot\chatbot\server.js:271:3)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+(node:1948) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 4)
+(node:1948) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'betListCurrencyOne' of undefined
+    at currencyPair (C:\Projects\chatbot\chatbot\server.js:256:34)
+    at BetList.find.exec.then.betList (C:\Projects\chatbot\chatbot\server.js:271:3)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+(node:1948) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 5)

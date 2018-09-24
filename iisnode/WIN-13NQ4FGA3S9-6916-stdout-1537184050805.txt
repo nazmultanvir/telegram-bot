@@ -1,0 +1,44 @@
+saved
+[ { _id: 5b9f160d378c0e1f7077d26d,
+    betListId: 361,
+    betId: 36,
+    betListCurrencyOne: 'EURUSD',
+    betListCurrencyTwo: 'GOLD',
+    betListDate: 2018-09-17T02:48:45.194Z,
+    __v: 0 },
+  { _id: 5b9f164c378c0e1f7077d26e,
+    betListId: 362,
+    betId: 36,
+    betListCurrencyOne: 'EURUSD',
+    betListCurrencyTwo: 'GBPUSD',
+    betListDate: 2018-09-17T02:49:48.293Z,
+    __v: 0 },
+  { _id: 5b9f1673378c0e1f7077d26f,
+    betListId: 363,
+    betId: 36,
+    betListCurrencyOne: 'GBPUSD',
+    betListCurrencyTwo: 'EURUSD',
+    betListDate: 2018-09-17T02:50:27.841Z,
+    __v: 0 } ]
+[ 'EURUSD + GOLD', 'EURUSD + GBPUSD', 'GBPUSD + EURUSD' ]
+[ 'setBet', 'EURUSD', 'GOLD', '361' ]
+[ 'SetBetProcessing', '0', 'EURUSD', 'GOLD', '361' ]
+SetBetProcessing_______________ []
+{ _id: 5b9fb9733f790a1b04b49d98,
+  chatId: 607954882,
+  betId: 36,
+  betListId: 361,
+  betType: 0,
+  betCurrencyValue: 1204.7,
+  betReward: 221,
+  betDate: 2018-09-17T14:25:55.944Z,
+  __v: 0 }
+607954882 50
+350
+{ _id: 5b9fb9733f790a1b04b49d99,
+  chatId: 607954882,
+  betId: 45,
+  points: 400,
+  ChangePoint: 50,
+  modificationTime: 2018-09-17T14:25:55.976Z,
+  __v: 0 }

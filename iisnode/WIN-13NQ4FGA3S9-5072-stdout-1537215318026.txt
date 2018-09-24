@@ -1,0 +1,10 @@
+[ 'SetBetProcessing', '1', 'EURUSD', 'GOLD', '361' ]
+SetBetProcessing_______________ [ { _id: 5b9fb9733f790a1b04b49d98,
+    chatId: 607954882,
+    betId: 36,
+    betListId: 361,
+    betType: 0,
+    betCurrencyValue: 1204.7,
+    betReward: 221,
+    betDate: 2018-09-17T14:25:55.944Z,
+    __v: 0 } ]

@@ -7,8 +7,7 @@ const axios = require('axios');
                 responseType:'json'
               })
                 .then(function(response) {
-
-                    console.log(response);
+                    return response;
                 });
     }
 

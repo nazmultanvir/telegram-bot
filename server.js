@@ -20,7 +20,6 @@ const BetList = require('./model/BetList');
 
 const bot = new Telegraf('516124228:AAGk6_VlhOeLGuWg4w22H1tYd9eHCUgLOR0')
 
-// bot.use(Telegraf.log())
 
 
 bot.use(session())
@@ -52,58 +51,58 @@ bot.command('start', ctx => {
 
 });
 
-// Bet
-//BetUP
-bot.action('BetUP', (ctx) => {
-	console.log(ctx.callbackQuery);
-	Bet.find({chatId: ctx.from.id, betId: BetGroup.betGroupRoundUp()})
-	.exec()
-	.then(bet => {
-		if(bet.length <= 100){
-			async function asyncCall() {
-				var result = await currencyPair.pairValue('EURUSD','GOLD');
-				return result;
-			  }
-			  asyncCall().then((currency)=>{
+// // Bet
+// //BetUP
+// bot.action('BetUP', (ctx) => {
+// 	console.log(ctx.callbackQuery);
+// 	Bet.find({chatId: ctx.from.id, betId: BetGroup.betGroupRoundUp()})
+// 	.exec()
+// 	.then(bet => {
+// 		if(bet.length <= 100){
+// 			async function asyncCall() {
+// 				var result = await currencyPair.pairValue('EURUSD','GOLD');
+// 				return result;
+// 			  }
+// 			  asyncCall().then((currency)=>{
 		
-			const bet = new Bet({ chatId: ctx.from.id, betId : BetGroup.betGroupRoundUp(), betType: 1, betCurrencyValue: currency.toFixed(2), betReward : BetGroup.betAward(), betDate: new Date() });
-			bet.save().then((result) => {
-					ctx.reply('Thank you so much for your bet, you have bet 👍 UP when currency pair value is '+result.betCurrencyValue+'  if you win you will get '+result.betReward+' as reward point');
-					pointCalculation.pointCalculation(ctx.from.id, 50)
-			});
+// 			const bet = new Bet({ chatId: ctx.from.id, betId : BetGroup.betGroupRoundUp(), betType: 1, betCurrencyValue: currency.toFixed(2), betReward : BetGroup.betAward(), betDate: new Date() });
+// 			bet.save().then((result) => {
+// 					ctx.reply('Thank you so much for your bet, you have bet 👍 UP when currency pair value is '+result.betCurrencyValue+'  if you win you will get '+result.betReward+' as reward point');
+// 					pointCalculation.pointCalculation(ctx.from.id, 50)
+// 			});
 		
-		})
-		}else{
-			ctx.reply('you have no bet remaining on this week, to check you remaining bet /betreamin');
-		}
-	})
+// 		})
+// 		}else{
+// 			ctx.reply('you have no bet remaining on this week, to check you remaining bet /betreamin');
+// 		}
+// 	})
 
-})
-bot.action('BetDOWN', (ctx) => {
-	console.log(ctx.callbackQuery);
-	Bet.find({chatId: ctx.from.id, betId: BetGroup.betGroupRoundUp()})
-	.exec()
-	.then(bet => {
-		if(bet.length <= 100){
-			async function asyncCall() {
-				var result = await currencyPair.pairValue('EURUSD','GOLD');
-				return result;
-			  }
-			  asyncCall().then((currency)=>{
+// })
+// bot.action('BetDOWN', (ctx) => {
+// 	console.log(ctx.callbackQuery);
+// 	Bet.find({chatId: ctx.from.id, betId: BetGroup.betGroupRoundUp()})
+// 	.exec()
+// 	.then(bet => {
+// 		if(bet.length <= 100){
+// 			async function asyncCall() {
+// 				var result = await currencyPair.pairValue('EURUSD','GOLD');
+// 				return result;
+// 			  }
+// 			  asyncCall().then((currency)=>{
 		
-			const bet = new Bet({ chatId: ctx.from.id, betId : BetGroup.betGroupRoundUp(), betType: 0, betCurrencyValue: currency.toFixed(2), betReward : BetGroup.betAward(), betDate: new Date() });
-			bet.save().then((result) => {
-					ctx.reply('Thank you so much for your bet, you have bet 👎 Down when currency pair value is '+result.betCurrencyValue+'  if you win you will get '+result.betReward+' as reward point');
-					pointCalculation.pointCalculation(ctx.from.id, 50)
-			});
+// 			const bet = new Bet({ chatId: ctx.from.id, betId : BetGroup.betGroupRoundUp(), betType: 0, betCurrencyValue: currency.toFixed(2), betReward : BetGroup.betAward(), betDate: new Date() });
+// 			bet.save().then((result) => {
+// 					ctx.reply('Thank you so much for your bet, you have bet 👎 Down when currency pair value is '+result.betCurrencyValue+'  if you win you will get '+result.betReward+' as reward point');
+// 					pointCalculation.pointCalculation(ctx.from.id, 50)
+// 			});
 		
-		})
-		}else{
-			ctx.reply('you have no bet remaining on this week, to check you remaining bet /betreamin');
-		}
-	})
+// 		})
+// 		}else{
+// 			ctx.reply('you have no bet remaining on this week, to check you remaining bet /betreamin');
+// 		}
+// 	})
 
-})
+// })
 
 //CallBackQuery
 
@@ -112,19 +111,12 @@ bot.command('user', ctx=>{
 	User.find({})
     .exec()
     .then(user => {
-
-		let chatId = user[1].chatId;
-		let message = 'this test knock for test from nazmul';
-		console.log(chatId, message);
-
-		sendMessage.sendMessage(user[0].chatId, message);
-		sendMessage.sendMessage(user[1].chatId, message);
-		sendMessage.sendMessage(user[2].chatId, message);
-
-		// let i  = 0;
-		// for(i==0; i<=user.length;i++){
-		// 	sendMessage.sendMessage(chatId, message);
-		// }
+		let message = 'this test knock for test from nazmul 2nd test';
+		let i  = 0;
+		for(i==0; i<=user.length;i++){
+			let chatId = user[i].chatId;
+			sendMessage.sendMessage(chatId, message);
+		}
 	});
 })
 
@@ -151,7 +143,7 @@ bot.command('points', ctx =>{
 	User.find({chatId: ctx.from.id})
     .exec()
     .then(user => {
-	  
+		ctx.reply('You have '+user[0].points+' bet point remaming !');
 	  
 	});
 })
