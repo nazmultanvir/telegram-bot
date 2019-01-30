@@ -1,0 +1,3 @@
+(node:4008) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Failed to fetch updates. Waiting: 1s request to https://api.telegram.org/bot516124228:AAGk6_VlhOeLGuWg4w22H1tYd9eHCUgLOR0/getUpdates?offset=0&limit=100&timeout=30 failed, reason: read ECONNRESET
+Failed to fetch updates. Waiting: 1s request to https://api.telegram.org/bot516124228:AAGk6_VlhOeLGuWg4w22H1tYd9eHCUgLOR0/getUpdates?offset=0&limit=100&timeout=30 failed, reason: read ECONNRESET
